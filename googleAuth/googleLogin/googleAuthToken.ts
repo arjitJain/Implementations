@@ -17,7 +17,7 @@ export async function getGoogleOAuthTokens({
   const values = {
     code,
     client_secret: "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",
-    redirect_uri: "http://localhost:2001",
+    redirect_uri: "http://localhost:2001/home",
     client_id: "761634072915-6k9aahur5tghu77n39ptvhmmgfs6ipqt.apps.googleusercontent.com",
     grant_type: "authorization_code",
   };

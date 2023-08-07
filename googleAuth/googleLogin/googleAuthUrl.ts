@@ -3,7 +3,7 @@ function getGoogleOAuthURL() {
   const rootUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 
   const options = {
-    redirect_uri: "http://localhost:2001",
+    redirect_uri: "http://localhost:2001/home",
     client_id: "761634072915-6k9aahur5tghu77n39ptvhmmgfs6ipqt.apps.googleusercontent.com",
     access_type: "offline",
     response_type: "code",
