@@ -5,15 +5,17 @@ import { facebookAuth } from './facebook/facebookAuth'
 const app = express();
 import  getGoogleOAuthURL  from './googleLogin/googleAuthUrl';
 import {githubAuth} from './github/auth'
-import axios from 'axios';
 import {facebookUserDetails} from './facebook/userDetails'
+import { linkedinAuth } from './linkedIn/linkedinAuth';
+import { linkedinUserDetails } from './linkedIn/linkedinUserDetails';
 
 app.set('view engine','ejs');
 app.get('/',(req:any,res:any)=>{
 res.render('index',{
   getGoogleOAuthURL,
   githubAuth,
-  facebookAuth
+  facebookAuth,
+  linkedinAuth
 })
 });
 app.get('/home',googleOauthHandler);
@@ -25,6 +27,11 @@ app.get('/gitHubPage',githubUserDetails);
 //facebook login
 app.get('/login/facebook',facebookAuth );
 app.get('/facebookHome',facebookUserDetails);
+
+//linkedin login
+app.get('/login/linkedin',linkedinAuth );
+app.get('/linkedinHome',linkedinUserDetails);
+
 
 app.listen(2001,()=>{
   console.log('heelo')
