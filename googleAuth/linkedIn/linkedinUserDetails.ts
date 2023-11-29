@@ -28,6 +28,7 @@ export async function linkedinUserDetails(req: any, res: any) {
       }
     );
     const accessToken = tokenResponse.data.access_token;
+    console.log('accessToken  ',accessToken)
     const profileResponse = await axios.get(
       'https://api.linkedin.com/v2/userinfo',
       {
