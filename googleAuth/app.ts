@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import { googleOauthHandler } from "./googleLogin/googleAuthHandler";
 import { githubUserDetails } from "./github/userDetails";
 import { facebookAuth } from "./facebook/facebookAuth";
@@ -20,6 +21,9 @@ import { gitlabAuth } from "./gitlab/gitlabAuth";
 import { gitlabUserDetails } from "./gitlab/userDetails";
 import { discordAuth } from "./discord/discordAuth";
 import { discordUserDetails } from "./discord/userDetails";
+import { microsoftUserDetails } from "./microsoft/userDetails";
+import { microsoftAuth } from "./microsoft/microsoftAuth";
+app.use(cors())
 app.set("view engine", "ejs");
 app.get("/", (req: any, res: any) => {
   res.render("index", {
@@ -33,8 +37,13 @@ app.get("/", (req: any, res: any) => {
     yahooAuth,
     amazonAuth,
     gitlabAuth,
-    discordAuth
+    discordAuth,
+    microsoftAuth
   });
+});
+app.get("/passwordReset", (req: any, res: any) => {
+  const token = req.query.token; // Get token from query parameter
+  res.render("home",{token})
 });
 app.get("/home", googleOauthHandler);
 
@@ -70,6 +79,9 @@ app.get("/discordHome", discordUserDetails);
 app.get("/login/gitlab", gitlabAuth);
 app.get("/gitlabHome", gitlabUserDetails);
 
+//microsoft login
+app.get("/login/microsoft", microsoftAuth);
+app.get("/redirect", microsoftUserDetails);
 
 //reddit login
 // app.get("/login/twitter", redditAuth);

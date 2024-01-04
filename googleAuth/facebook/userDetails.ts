@@ -8,7 +8,7 @@ export async function facebookUserDetails(req:any,res:any){
   try {
     // Exchange the code for an access token
     const response = await axios.get(
-      `https://graph.facebook.com/v12.0/oauth/access_token?client_id=${appId}&redirect_uri=${redirectUri}&client_secret=${appSecret}&code=${code}`
+      `https://graph.facebook.com/v12.0/oauth/access_token?client_id=${appId}&redirect_uri=${redirectUri}&client_secret=${appSecret}&code=${code}&scope=email`
     );
 
     // Use the access token to get user information
@@ -35,7 +35,7 @@ export async function facebookUserDetails(req:any,res:any){
     });
 
     // Handle the user data as needed (e.g., create a new user, log in, etc.)
-    console.log(userData.data);
+    console.log(userData);
 
     // Redirect the user to a success page or send a response
     res.send('Logged in with Facebook successfully!');

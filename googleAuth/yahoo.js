@@ -6,7 +6,7 @@ async function yahoo(){
   const clientId = 'dj0yJmk9VUFucFF6TlJqSnlIJmQ9WVdrOU0weDRRV2w0WkVzbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWM5';
   const clientSecret = 'd96472c1e28c7d302f8e8f4e295957c3249db3e3';
   const redirectUri = 'https://www.google.com';
-  const code = 'bf2rjhqu93yty4782cp4p2spas2raetk'; // Replace with the authorization code obtained from the user's authorization flow
+  const code = '4rej83pshup22nrp6tmc8uq892rq4py6'; // Replace with the authorization code obtained from the user's authorization flow
   
   const tokenEndpoint = 'https://api.login.yahoo.com/oauth2/get_token';
   

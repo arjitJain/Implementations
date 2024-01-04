@@ -1,6 +1,60 @@
-<html>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Reset Form</title>
+</head>
+<body>
+  <h2>Password Reset</h2>
+  <form id="resetForm">
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" required><br><br>
+    
+    <label for="newPassword">New Password:</label><br>
+    <input type="password" id="newPassword" name="newPassword" required><br><br>
 
-    <h1>Please home</h1>
-  </body>
+    <input type="hidden" id="token" name="token" value="<%= token %>">
+    <!-- Hidden input field to store the token -->
+
+    <input type="submit" value="Reset Password">
+  </form>
+
+  <script>
+    document.getElementById('resetForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const email = document.getElementById('email').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const token = document.getElementById('token').value;
+
+      // Construct the data object to send in the POST request
+      const data = {
+        email,
+        newPassword,
+        token
+      };
+
+      // Make API call using fetch
+      fetch('http://localhost:3007/auth/reset-password-verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Password reset successful');
+          // Handle success
+        } else {
+          console.error('Password reset failed');
+          // Handle failure
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
 </html>
